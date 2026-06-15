@@ -1,0 +1,9 @@
+/Users/ola/Documents/Github/fission-examples/target/debug/deps/objc2_core_text-053a95fa637b4e18.d: /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/lib.rs /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/mod.rs /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/CTFont.rs /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/CTFontDescriptor.rs /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/thread_safety.rs
+
+/Users/ola/Documents/Github/fission-examples/target/debug/deps/libobjc2_core_text-053a95fa637b4e18.rmeta: /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/lib.rs /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/mod.rs /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/CTFont.rs /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/CTFontDescriptor.rs /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/thread_safety.rs
+
+/Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/lib.rs:
+/Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/mod.rs:
+/Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/CTFont.rs:
+/Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/generated/CTFontDescriptor.rs:
+/Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/objc2-core-text-0.3.2/src/thread_safety.rs:

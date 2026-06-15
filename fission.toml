@@ -1,0 +1,11 @@
+targets = [
+    "ios",
+    "linux",
+    "macos",
+    "windows",
+]
+
+[app]
+name = "rider-app"
+app_id = "com.uber.rider"
+

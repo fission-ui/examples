@@ -1,0 +1,7 @@
+/Users/ola/Documents/Github/fission-examples/target/debug/deps/foreign_types_shared-03b51af6c17087bc.d: /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/foreign-types-shared-0.3.1/src/lib.rs
+
+/Users/ola/Documents/Github/fission-examples/target/debug/deps/libforeign_types_shared-03b51af6c17087bc.rlib: /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/foreign-types-shared-0.3.1/src/lib.rs
+
+/Users/ola/Documents/Github/fission-examples/target/debug/deps/libforeign_types_shared-03b51af6c17087bc.rmeta: /Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/foreign-types-shared-0.3.1/src/lib.rs
+
+/Users/ola/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/foreign-types-shared-0.3.1/src/lib.rs:
