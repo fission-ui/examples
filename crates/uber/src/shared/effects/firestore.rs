@@ -2,7 +2,6 @@ use crate::shared::models::trip::Trip;
 use crate::shared::models::trip::NearbyDriver;
 use anyhow::{Result, Context};
 use reqwest::Client;
-use serde::{Deserialize, Serialize};
 
 const PROJECT_ID: &str = "YOUR_FIREBASE_PROJECT_ID";
 const FIRESTORE_URL: &str = "https://firestore.googleapis.com/v1/projects";
@@ -25,10 +24,11 @@ pub async fn create_trip_request(client: &Client, id_token: &str, trip: &Trip) -
         .bearer_auth(id_token)
         .json(&payload)
         .send()
-        .await?;
+        .await
+        .context("Failed to send trip request to Firestore")?;
 
     if !res.status().is_success() {
-        let err_text = res.text().await?;
+        let err_text = res.text().await.context("Failed to read error text from Firestore response")?;
         anyhow::bail!("Failed to create trip request: {}", err_text);
     }
 

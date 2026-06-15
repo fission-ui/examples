@@ -1,4 +1,3 @@
-use crate::shared::models::user::User;
 use anyhow::{Result, Context};
 use reqwest::Client;
 use serde::{Deserialize, Serialize};

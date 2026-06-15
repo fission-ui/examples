@@ -2,7 +2,6 @@
 
 use crate::shared::models::{
     user::User,
-    driver::Driver,
     trip::{Trip, NearbyDriver},
     location::{LatLng, GeoAddress},
     place::PlacePrediction,

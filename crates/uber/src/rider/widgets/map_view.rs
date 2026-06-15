@@ -9,8 +9,8 @@ pub struct MapView {
 }
 
 impl From<MapView> for Widget {
-    fn from(view: MapView) -> Widget {
-        let map_image = Image::file("/Users/ola/.gemini/antigravity/brain/3392c4e2-5ab0-4512-968f-ab3a96f5afbc/uber_map_background_1780932349119.png")
+    fn from(_view: MapView) -> Widget {
+        let map_image = Image::asset("assets/map.png")
             .fit(fission::op::ImageFit::Cover);
     
         // Wrap in a Positioned to stretch it to fill the screen

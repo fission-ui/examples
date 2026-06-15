@@ -2,7 +2,6 @@
 
 use crate::shared::state::AppState;
 use crate::shared::models::trip::NearbyDriver;
-use crate::shared::models::payment::FareEstimate;
 use crate::shared::models::trip::TripStatus;
 
 /// Returns whether the user is logged in.

@@ -3,7 +3,6 @@ pub mod rider;
 pub mod driver;
 pub mod admin;
 
-use fission::prelude::*;
 
 // Default iOS mobile entry point sets the Rider App as the primary app
 #[cfg(target_os = "ios")]

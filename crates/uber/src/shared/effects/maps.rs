@@ -4,7 +4,6 @@ use crate::shared::models::{
     direction::DirectionDetails,
 };
 use anyhow::{Result, Context};
-use google_maps::prelude::*;
 
 const GOOGLE_MAPS_API_KEY: &str = "YOUR_MAPS_API_KEY";
 
