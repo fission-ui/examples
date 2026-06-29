@@ -1,0 +1,3 @@
+fission-shell-winit: renderer: metal-vello requested=auto backend=Metal adapter=Apple M1 Pro size=1600x1200 scale=2.00
+Video playback error for WidgetId(ce9e119f8b1f90ac3d70a1bb5e8cb9a5): "video source path does not exist (requested='assets/videos/video1.mp4', resolved='/assets/videos/video1.mp4')"
+Video playback error for WidgetId(ce9e119f8b1f90ac3d70a1bb5e8cb9a5): "video source path does not exist (requested='assets/videos/video1.mp4', resolved='/assets/videos/video1.mp4')"

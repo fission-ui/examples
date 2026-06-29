@@ -1,0 +1,108 @@
+{
+  "videos": [
+    {
+      "id": "1",
+      "videoFile": "video1.mp4",
+      "user": {
+        "name": "bruno_dev",
+        "imageUrl": "https://i.pravatar.cc/150?img=3"
+      },
+      "caption": "Just vibing to this sunset 🌅 #vibes #sunset",
+      "music": "Original Sound - Bruno",
+      "likes": 1200,
+      "comments": 89,
+      "shares": 45
+    },
+    {
+      "id": "2",
+      "videoFile": "video2.mp4",
+      "user": {
+        "name": "ada_codes",
+        "imageUrl": "https://i.pravatar.cc/150?img=12"
+      },
+      "caption": "Rust is taking over 🦀 #rustlang #coding",
+      "music": "Lo-fi Study Beats - ChillHop",
+      "likes": 3400,
+      "comments": 211,
+      "shares": 130
+    },
+    {
+      "id": "3",
+      "videoFile": "video3.mp4",
+      "user": {
+        "name": "mina_creates",
+        "imageUrl": "https://i.pravatar.cc/150?img=29"
+      },
+      "caption": "New transition tutorial! ✨ #tutorial #fyp",
+      "music": "Dance Monkey - Tones and I",
+      "likes": 9800,
+      "comments": 540,
+      "shares": 700
+    },
+    {
+      "id": "4",
+      "videoFile": "video4.mp4",
+      "user": {
+        "name": "pixel_art_pro",
+        "imageUrl": "https://i.pravatar.cc/150?img=8"
+      },
+      "caption": "Making pixel art in 60 seconds 🎨 #pixelart #art",
+      "music": "Blinding Lights - The Weeknd",
+      "likes": 15600,
+      "comments": 890,
+      "shares": 1200
+    },
+    {
+      "id": "5",
+      "videoFile": "video5.mp4",
+      "user": {
+        "name": "chef_maria",
+        "imageUrl": "https://i.pravatar.cc/150?img=25"
+      },
+      "caption": "Quick pasta recipe you NEED to try 🍝 #cooking #foodie",
+      "music": "Heat Waves - Glass Animals",
+      "likes": 22000,
+      "comments": 1500,
+      "shares": 3400
+    },
+    {
+      "id": "6",
+      "videoFile": "video1.mp4",
+      "user": {
+        "name": "travel_jake",
+        "imageUrl": "https://i.pravatar.cc/150?img=15"
+      },
+      "caption": "Hidden gem in Bali 🌴 #travel #bali #paradise",
+      "music": "Watermelon Sugar - Harry Styles",
+      "likes": 45000,
+      "comments": 2100,
+      "shares": 5600
+    },
+    {
+      "id": "7",
+      "videoFile": "video2.mp4",
+      "user": {
+        "name": "fitness_sam",
+        "imageUrl": "https://i.pravatar.cc/150?img=33"
+      },
+      "caption": "No gym needed 💪 Full body workout #fitness #workout",
+      "music": "Levitating - Dua Lipa",
+      "likes": 8900,
+      "comments": 430,
+      "shares": 890
+    },
+    {
+      "id": "8",
+      "videoFile": "video3.mp4",
+      "user": {
+        "name": "comedy_queen",
+        "imageUrl": "https://i.pravatar.cc/150?img=44"
+      },
+      "caption": "POV: Your cat judges your life choices 😂 #comedy #cats",
+      "music": "Oh No - Kreepa",
+      "likes": 67000,
+      "comments": 4200,
+      "shares": 12000
+    }
+  ]
+}

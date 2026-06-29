@@ -4,18 +4,18 @@ pub mod driver;
 pub mod admin;
 
 
-// Default iOS mobile entry point sets the Rider App as the primary app
 #[cfg(target_os = "ios")]
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn fission_mobile_main() {
+    // We only use standard formatting here because the tracing-subscriber
+    // feature for env-filter might not be fully enabled in the workspace.
     tracing_subscriber::fmt()
-        .with_env_filter("info,wgpu=warn,fission=debug")
         .with_writer(std::io::stderr)
         .init();
 
     tracing::info!("Starting Fission iOS app for Uber Rider!");
 
-    MobileApp::<rider::app::RiderAppState, _>::new(rider::app::RiderApp {})
+    fission::prelude::MobileApp::<shared::state::AppState, _>::new(rider::app::RiderApp {})
         .run()
         .expect("Failed to run mobile app");
 }

@@ -1,0 +1,15 @@
+[package]
+name = "tiktok-fission"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+fission = { version = "0.4", default-features = false, features = ["desktop", "android", "ios"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[patch.crates-io]
+android-activity = { path = "./android-activity-patch" }

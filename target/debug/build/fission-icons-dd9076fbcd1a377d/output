@@ -1,2 +1,0 @@
-cargo:rerun-if-env-changed=FISSION_MATERIAL_ICONS_DIR
-cargo:rerun-if-changed=material-icons-vendor/index.json

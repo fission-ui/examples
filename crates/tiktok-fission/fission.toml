@@ -1,0 +1,12 @@
+targets = [
+    "android",
+    "ios",
+    "linux",
+    "macos",
+    "windows",
+]
+
+[app]
+name = "tiktok-fission"
+app_id = "com.example.tiktok_fission"
+

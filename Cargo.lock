@@ -5267,6 +5267,7 @@ dependencies = [
  "anyhow",
  "chrono",
  "fission",
+ "fission-icons",
  "google_maps",
  "reqwest 0.12.28",
  "serde",
