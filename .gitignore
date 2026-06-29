@@ -6,3 +6,6 @@ Cargo.lock
 # Temporary audit files
 audit.sh
 audit_output.txt
+
+# Fission build artifacts
+.fission/
