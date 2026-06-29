@@ -1,17 +1,30 @@
 use fission::prelude::*;
 
-pub fn build_video_item(video_file: &str, is_playing: bool) -> Widget {
-    let video_id = WidgetId::explicit(video_file);
-    let source = format!("assets/videos/{}", video_file);
+#[fission_component]
+#[derive(Clone)]
+pub struct VideoItem {
+    pub video_file: String,
+    pub is_playing: bool,
+}
 
-    // Video fills the entire screen — no explicit size constraints
-    // The ZStack parent will stretch it to fill available space
-    Video {
-        id: Some(video_id),
-        source,
-        width: None,
-        height: None,
-        autoplay: is_playing,
-        loop_playback: true,
-    }.into()
+impl Default for VideoItem {
+    fn default() -> Self {
+        panic!("VideoItem must be initialized with data");
+    }
+}
+
+impl From<VideoItem> for Widget {
+    fn from(item: VideoItem) -> Self {
+        let video_id = WidgetId::explicit(&item.video_file);
+        let source = format!("assets/videos/{}", item.video_file);
+
+        Video {
+            id: Some(video_id),
+            source,
+            width: None,
+            height: None,
+            autoplay: item.is_playing,
+            loop_playback: true,
+        }.into()
+    }
 }

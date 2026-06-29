@@ -1,132 +1,118 @@
 use fission::prelude::*;
-
+use fission::op::{AlignItems, JustifyContent};
 use crate::state::TikTokState;
-use crate::ui_helpers::{rgb, text, text_bold, empty_container};
 
-pub fn build_profile(state: &TikTokState) -> Widget {
-    let (username, avatar_initial) = if let Some(video) = state.videos.first() {
-        (video.user.name.clone(), video.user.name.chars().next().unwrap_or('U'))
-    } else {
-        ("user".to_string(), 'U')
-    };
+#[fission_component]
+#[derive(Clone, Default)]
+pub struct ProfileScreen {}
 
-    let bg_black = rgb(0, 0, 0);
-    let text_white = rgb(255, 255, 255);
-    let text_grey = rgb(170, 170, 170);
-    let card_bg = rgb(25, 25, 25);
-    let divider_color = rgb(51, 51, 51);
-    let tiktok_red = rgb(237, 28, 82);
+impl From<ProfileScreen> for Widget {
+    fn from(_: ProfileScreen) -> Self {
+        let (ctx, view) = fission::build::current::<TikTokState>();
+        let state = view.state();
+        let tokens = &view.env().theme.tokens;
 
-    let stats = Row {
-        children: vec![
-            build_stat("42", "Following", text_white, text_grey),
-            build_stat("1.2M", "Followers", text_white, text_grey),
-            build_stat("8.5M", "Likes", text_white, text_grey),
-        ],
-        ..Default::default()
-    };
+        let (username, avatar_initial) = if let Some(video) = state.videos.first() {
+            (video.user.name.clone(), video.user.name.chars().next().unwrap_or('U'))
+        } else {
+            ("user".to_string(), 'U')
+        };
 
-    let buttons = Row {
-        children: vec![
-            Container {
-                child: Some(text_bold("Edit Profile", 14.0, text_white).into()),
-                ..Default::default()
-            }
-            .bg(rgb(51, 51, 51))
-            .border_radius(4.0)
-            .padding([32.0, 32.0, 10.0, 10.0])
-            .into(),
-            Container {
-                child: Some(text("📤", 16.0, text_white).into()),
-                ..Default::default()
-            }
-            .bg(rgb(51, 51, 51))
-            .border_radius(4.0)
-            .padding([16.0, 16.0, 10.0, 10.0])
-            .into(),
-        ],
-        ..Default::default()
-    };
-
-    let num_videos = state.videos.len().max(9);
-    let mut grid_rows: Vec<Widget> = Vec::new();
-    for row_start in (0..num_videos).step_by(3) {
-        let mut row_children = Vec::new();
-        for col in 0..3 {
-            let idx = row_start + col;
-            if idx < state.videos.len() {
-                row_children.push(
-                    Container {
-                        child: Some(
-                            Column {
-                                children: vec![
-                                    text("▶", 20.0, text_white).into(),
-                                    text(&format!("{}", crate::state::format_count(state.videos[idx].likes)), 11.0, text_grey).into(),
-                                ],
-                                ..Default::default()
-                            }.into()
-                        ),
-                        ..Default::default()
-                    }
-                    .width(130.0)
-                    .height(160.0)
-                    .bg(card_bg)
-                    .into()
-                );
-            } else {
-                row_children.push(
-                    empty_container()
-                        .width(130.0)
-                        .height(160.0)
-                        .bg(rgb(13, 13, 13))
-                        .into()
-                );
-            }
-        }
-        grid_rows.push(Row { children: row_children, ..Default::default() }.into());
-    }
-
-    let mut main_children: Vec<Widget> = vec![
-        empty_container().height(52.0).into(),
-        text_bold(&format!("@{}", username), 18.0, text_white).into(),
-        Container {
-            child: Some(text_bold(&avatar_initial.to_uppercase().to_string(), 36.0, text_white).into()),
-            ..Default::default()
-        }
-        .width(88.0)
-        .height(88.0)
-        .border_radius(44.0)
-        .bg(tiktok_red)
-        .into(),
-        stats.into(),
-        text("Building cool things with Rust 🦀", 13.0, text_grey).into(),
-        buttons.into(),
-        empty_container().height(0.5).width(390.0).bg(divider_color).into(),
-        Row {
+        let stats = fission::core::ui::Row {
             children: vec![
-                text_bold("📹 Videos", 14.0, text_white).into(),
-                text("❤️ Liked", 14.0, text_grey).into(),
+                build_stat("42", "Following", tokens),
+                build_stat("1.2M", "Followers", tokens),
+                build_stat("8.5M", "Likes", tokens),
             ],
             ..Default::default()
-        }.into(),
-    ];
-    main_children.extend(grid_rows);
+        };
 
-    Container {
-        child: Some(Column { children: main_children, ..Default::default() }.into()),
-        ..Default::default()
+        let buttons = fission::core::ui::Row {
+            children: vec![
+                Container::new(fission::core::ui::Text::new("Edit Profile"))
+                    .bg(tokens.colors.surface)
+                    .border_radius(4.0)
+                    .padding([32.0, 32.0, 10.0, 10.0])
+                    .into(),
+                Container::new(fission::core::ui::Text::new("📤"))
+                    .bg(tokens.colors.surface)
+                    .border_radius(4.0)
+                    .padding([16.0, 16.0, 10.0, 10.0])
+                    .into(),
+            ],
+            ..Default::default()
+        };
+
+        let num_videos = state.videos.len().max(9);
+        let mut grid_rows: Vec<Widget> = Vec::new();
+        for row_start in (0..num_videos).step_by(3) {
+            let mut row_children = Vec::new();
+            for col in 0..3 {
+                let idx = row_start + col;
+                if idx < state.videos.len() {
+                    row_children.push(
+                        Container::new(
+                            fission::core::ui::Column {
+                                children: vec![
+                                    fission::core::ui::Text::new("▶").into(),
+                                    fission::core::ui::Text::new(crate::state::format_count(state.videos[idx].likes)).into(),
+                                ],
+                                ..Default::default()
+                            }
+                        )
+                        .width(130.0)
+                        .height(160.0)
+                        .bg(tokens.colors.surface)
+                        .into()
+                    );
+                } else {
+                    row_children.push(
+                        Container::default()
+                            .width(130.0)
+                            .height(160.0)
+                            .bg(tokens.colors.surface)
+                            .into()
+                    );
+                }
+            }
+            grid_rows.push(fission::core::ui::Row { children: row_children, ..Default::default() }.into());
+        }
+
+        let mut main_children: Vec<Widget> = vec![
+            Container::default().height(52.0).into(),
+            fission::core::ui::Text::new(format!("@{}", username)).into(),
+            Container::new(fission::core::ui::Text::new(avatar_initial.to_uppercase().to_string()))
+                .width(88.0)
+                .height(88.0)
+                .border_radius(44.0)
+                .bg(tokens.colors.primary)
+                .into(),
+            stats.into(),
+            fission::core::ui::Text::new("Building cool things with Rust 🦀").into(),
+            buttons.into(),
+            Container::default().height(0.5).bg(tokens.colors.border).into(),
+            fission::core::ui::Row {
+                children: vec![
+                    fission::core::ui::Text::new("📹 Videos").into(),
+                    fission::core::ui::Text::new("❤️ Liked").into(),
+                ],
+                ..Default::default()
+            }.into(),
+        ];
+        main_children.extend(grid_rows);
+
+        Container::new(fission::core::ui::Column { children: main_children, ..Default::default() })
+            .bg(tokens.colors.background)
+            .flex_grow(1.0)
+            .into()
     }
-    .bg(bg_black)
-    .width(390.0)
-    .height(844.0)
-    .into()
 }
 
-fn build_stat(count: &str, label: &str, white: fission::op::Color, grey: fission::op::Color) -> Widget {
-    Column {
+fn build_stat(count: &str, label: &str, tokens: &fission::theme::Tokens) -> Widget {
+    fission::core::ui::Column {
         children: vec![
-            text_bold(count, 18.0, white).into(),
-            text(label, 12.0, grey).into(),
+            fission::core::ui::Text::new(count.to_string()).into(),
+            fission::core::ui::Text::new(label.to_string()).into(),
         ],
         ..Default::default()
     }.into()

@@ -4,61 +4,33 @@ use std::collections::HashSet;
 use crate::data::VideoData;
 use fission::prelude::*;
 
-#[derive(Action, Serialize, Deserialize, Debug, Clone, PartialEq)]
-pub struct DragEnd;
+// ─── Actions ─────────────────────────────────────────────────────────────────
 
 #[derive(Action, Serialize, Deserialize, Debug, Clone, PartialEq)]
-pub struct DragUpdate;
+pub struct SetCurrentPath(pub String);
 
-#[derive(Action, Serialize, Deserialize, Debug, Clone, PartialEq)]
-pub struct DragStart;
-
-pub fn reduce_drag_start(state: &mut TikTokState, _action: DragStart) {
-    state.drag_delta_y = 0.0;
+pub fn reduce_set_current_path(state: &mut TikTokState, action: SetCurrentPath, _ctx: &mut ReducerContext<TikTokState>) {
+    state.current_path = action.0;
 }
 
-pub fn reduce_drag_update(state: &mut TikTokState, _action: DragUpdate, ctx: &mut ReducerContext<TikTokState>) {
-    if let Some((_, _, _, dy)) = ctx.input.as_pointer() {
-        state.drag_delta_y += dy;
+#[derive(Action, Serialize, Deserialize, Debug, Clone, PartialEq)]
+pub struct ToggleLike(pub String);
+
+pub fn reduce_toggle_like(state: &mut TikTokState, action: ToggleLike, _ctx: &mut ReducerContext<TikTokState>) {
+    if state.liked_videos.contains(&action.0) {
+        state.liked_videos.remove(&action.0);
+    } else {
+        state.liked_videos.insert(action.0);
     }
-}
-
-pub fn reduce_drag_end(state: &mut TikTokState, _action: DragEnd) {
-    if state.drag_delta_y < -60.0 {
-        // swipe up → next video
-        if state.current_video_index + 1 < state.videos.len() {
-            state.current_video_index += 1;
-        }
-    } else if state.drag_delta_y > 60.0 {
-        // swipe down → previous video
-        state.current_video_index = state.current_video_index.saturating_sub(1);
-    }
-    state.drag_delta_y = 0.0;
-    state.is_playing = true;
-}
-
-// ─── Tab Navigation ──────────────────────────────────────────────────────────
-
-#[derive(Default, Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
-pub enum Tab {
-    #[default]
-    Home,
-    Discover,
-    Create,
-    Inbox,
-    Profile,
 }
 
 // ─── App State ───────────────────────────────────────────────────────────────
 
 #[derive(Debug, Clone)]
 pub struct TikTokState {
-    pub active_tab: Tab,
+    pub current_path: String,
     pub videos: Vec<VideoData>,
-    pub current_video_index: usize,
-    pub is_playing: bool,
     pub liked_videos: HashSet<String>,
-    pub drag_delta_y: f32,
     pub is_loaded: bool,
 }
 
@@ -66,12 +38,9 @@ impl Default for TikTokState {
     fn default() -> Self {
         let feed = crate::data::load_feed();
         Self {
-            active_tab: Tab::Home,
+            current_path: "/".to_string(),
             videos: feed.videos,
-            current_video_index: 0,
-            is_playing: true,
             liked_videos: HashSet::new(),
-            drag_delta_y: 0.0,
             is_loaded: true,
         }
     }
@@ -83,11 +52,6 @@ impl TikTokState {
     /// Check if a specific video is liked
     pub fn is_liked(&self, video_id: &str) -> bool {
         self.liked_videos.contains(video_id)
-    }
-
-    /// Get the current video, if any
-    pub fn current_video(&self) -> Option<&VideoData> {
-        self.videos.get(self.current_video_index)
     }
 
     /// Get like count for a video, adjusted for local like state

@@ -14,7 +14,7 @@ authors = ["Fission Team"]
 license = "MIT"
 
 [workspace.dependencies]
-fission = { git = "https://github.com/worka-ai/fission.git", default-features = false, features = ["desktop", "ios"] }
+fission = { version = "0.5.0", default-features = false, features = ["desktop", "ios"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 reqwest = { version = "0.12", features = ["json", "rustls-tls"] }

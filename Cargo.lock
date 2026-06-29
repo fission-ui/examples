@@ -1121,13 +1121,14 @@ checksum = "5baebc0774151f905a1a2cc41989300b1e6fbb29aff0ceffa1064fdd3088d582"
 
 [[package]]
 name = "fission"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "73f889a11c9f1948d47f75f5fcc136aaef6554328a2dfcc47e6fe9e84ad7f5cc"
 dependencies = [
  "fission-core",
  "fission-diagnostics",
  "fission-i18n",
- "fission-icons",
+ "fission-icons 0.5.0",
  "fission-ir",
  "fission-layout",
  "fission-macros",
@@ -1142,8 +1143,9 @@ dependencies = [
 
 [[package]]
 name = "fission-core"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3db4d58a6992e865f96da5f3504fc7591e9da2aa3c56e6e1104fbb1a239a5642"
 dependencies = [
  "anyhow",
  "blake3",
@@ -1165,8 +1167,9 @@ dependencies = [
 
 [[package]]
 name = "fission-design-system-codegen"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9867d99e75f54a3394784e0af0a1fb7c5194131359aeeee861115e46c94db28a"
 dependencies = [
  "anyhow",
  "serde_json",
@@ -1174,8 +1177,9 @@ dependencies = [
 
 [[package]]
 name = "fission-diagnostics"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "06a489a2dd899133bb775a41abaab8c365c713e8f99ac10e90c410b6dd8592a7"
 dependencies = [
  "bitflags 2.13.0",
  "once_cell",
@@ -1186,8 +1190,9 @@ dependencies = [
 
 [[package]]
 name = "fission-i18n"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b0839bd1999631490f559104d096118f39c774c4c9a9a9c4fcae98a66d4a8ab6"
 dependencies = [
  "serde",
 ]
@@ -1203,9 +1208,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "fission-icons"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "db356761c911b4410f692949704543216e30c00b38420771c7554e6162ac1651"
+dependencies = [
+ "heck 0.4.1",
+ "serde_json",
+ "walkdir",
+]
+
+[[package]]
 name = "fission-ir"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d2b81c90fe53140b826db060fb1b7e552e4c143c27a797adfe75631803031fff"
 dependencies = [
  "blake3",
  "serde",
@@ -1214,8 +1231,9 @@ dependencies = [
 
 [[package]]
 name = "fission-layout"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a9779467e99395f4339e5fd9f5673d99d5d8b5555dddbc3b5392d918b7de78ba"
 dependencies = [
  "anyhow",
  "fission-diagnostics",
@@ -1225,8 +1243,9 @@ dependencies = [
 
 [[package]]
 name = "fission-macros"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "32a5819d16f22f916b51e626556352f25c7aaf625af13075775f045706b9af06"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -1236,8 +1255,9 @@ dependencies = [
 
 [[package]]
 name = "fission-render"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bb369b5553894459787a1eca7ac78e90964cd64d26915648a07981b685cbb782"
 dependencies = [
  "anyhow",
  "fission-ir",
@@ -1247,8 +1267,9 @@ dependencies = [
 
 [[package]]
 name = "fission-render-vello"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "54aff61f3bb7827cf3549c8e8f095442ad99d2219a6e03b3b7e3248b1d3ae80d"
 dependencies = [
  "anyhow",
  "fission-diagnostics",
@@ -1270,8 +1291,9 @@ dependencies = [
 
 [[package]]
 name = "fission-semantics"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b1fbb6fb11d012e1441b51fbe3992a1184623f94dd293a4fa639c526f40218ad"
 dependencies = [
  "fission-ir",
  "serde",
@@ -1279,8 +1301,9 @@ dependencies = [
 
 [[package]]
 name = "fission-shell"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0cf3ece5d304937dfe71d29602a6c0c6b36a8d58ea9e206ff830bcda8fa846f0"
 dependencies = [
  "anyhow",
  "fission-core",
@@ -1294,8 +1317,9 @@ dependencies = [
 
 [[package]]
 name = "fission-shell-desktop"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f000b28724da92259d1d48e709b3945479f7f7e734e6df2f2134a8b51f0552c8"
 dependencies = [
  "anyhow",
  "fission-core",
@@ -1307,8 +1331,9 @@ dependencies = [
 
 [[package]]
 name = "fission-shell-mobile"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "10d18a5db8551faed3752b197c1daa58ad8b0d2d8a895a34663a4ff951c49b04"
 dependencies = [
  "anyhow",
  "fission-core",
@@ -1320,8 +1345,9 @@ dependencies = [
 
 [[package]]
 name = "fission-shell-winit"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "72bccb87bf406a5bb8fa2a89fd7e9e72e4ca0905fdab4eac2f782ad3ffa769e8"
 dependencies = [
  "anyhow",
  "arboard",
@@ -1365,8 +1391,9 @@ dependencies = [
 
 [[package]]
 name = "fission-test-driver"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3fbbc31d26e10f2ca7b5864d1dcb6b8cf834a8faff8ea12b0a42b440422c735c"
 dependencies = [
  "anyhow",
  "base64",
@@ -1377,16 +1404,18 @@ dependencies = [
 
 [[package]]
 name = "fission-text-engine"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "454aeba2b6ba90150a6122d3a46d7aabb0f3cd13bfe1f3be61c91b5d69409a14"
 dependencies = [
  "ropey",
 ]
 
 [[package]]
 name = "fission-theme"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8f13aacce9107c26c5a63307598aed9ab2e36425de53b1058576bec9ca28dced"
 dependencies = [
  "fission-design-system-codegen",
  "fission-ir",
@@ -1395,14 +1424,15 @@ dependencies = [
 
 [[package]]
 name = "fission-widgets"
-version = "0.4.0"
-source = "git+https://github.com/worka-ai/fission.git#717bd6d5cac7731e5f9a90ddad93f9b44ed5178e"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5610a8855d955b78fcfe8cda88350cc674d6e54ed19369d367b67052a759f841"
 dependencies = [
  "anyhow",
  "chrono",
  "fission-core",
  "fission-diagnostics",
- "fission-icons",
+ "fission-icons 0.5.0",
  "fission-ir",
  "fission-layout",
  "fission-macros",
@@ -5274,7 +5304,7 @@ dependencies = [
  "anyhow",
  "chrono",
  "fission",
- "fission-icons",
+ "fission-icons 0.4.0",
  "google_maps",
  "reqwest 0.12.28",
  "serde",
