@@ -25,3 +25,6 @@ thiserror = "2"
 tracing = "0.1"
 uuid = { version = "1", features = ["v4", "serde"] }
 chrono = { version = "0.4", features = ["serde"] }
+
+[patch.crates-io]
+android-activity = { path = "./android-activity-patch" }

@@ -16,8 +16,12 @@ pub fn build_action_sidebar(
             // ─── Avatar with red "+" follow badge ────────────────────────
             build_avatar(&video.user.name),
             Container::default().height(20.0).into(),
-            // ─── Like — RED circle (always red for visibility) ───────────
-            action_btn(LIKE_RED, display_likes, Some(on_like)),
+            // ─── Like — RED when liked, WHITE when not liked ─────────────
+            action_btn(
+                if is_liked { LIKE_RED } else { WHITE },
+                display_likes,
+                Some(on_like)
+            ),
             Container::default().height(20.0).into(),
             // ─── Comment — WHITE circle ──────────────────────────────────
             action_btn(WHITE, video.comments, None),
