@@ -11,7 +11,6 @@ impl From<CreateNavButton> for Widget {
     fn from(_: CreateNavButton) -> Self {
         let (ctx, view) = fission::build::current::<TikTokState>();
         let tokens = &view.env().theme.tokens;
-        let motion_id = WidgetId::explicit("nav.create.button.motion");
         let hit_id = WidgetId::explicit("nav.create.button.hit");
         let action = ctx.bind(
             crate::state::SetCurrentPath("/create".to_string()),
@@ -86,6 +85,6 @@ impl From<CreateNavButton> for Widget {
             ..Default::default()
         };
 
-        fission::motion::interactive(motion_id, fission::motion::hover_press(hit_id), tappable)
+        tappable.into()
     }
 }

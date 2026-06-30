@@ -16,7 +16,6 @@ impl From<CreatorAvatar> for Widget {
     fn from(avatar: CreatorAvatar) -> Self {
         let (_ctx, view) = fission::build::current::<crate::state::TikTokState>();
         let tokens = &view.env().theme.tokens;
-        let motion_id = WidgetId::explicit(&format!("creator.avatar.{}.motion", avatar.handle));
         let hit_id = WidgetId::explicit(&format!("creator.avatar.{}.hit", avatar.handle));
         let bg = color_from_hex(&avatar.avatar_color, tokens.colors.primary);
         let initial = avatar
@@ -89,7 +88,7 @@ impl From<CreatorAvatar> for Widget {
             ..Default::default()
         };
 
-        fission::motion::interactive(motion_id, fission::motion::hover_press(hit_id), tappable)
+        tappable.into()
     }
 }
 

@@ -343,7 +343,6 @@ impl From<CaptureModeChip> for Widget {
     fn from(chip: CaptureModeChip) -> Self {
         let (_ctx, view) = fission::build::current::<TikTokState>();
         let tokens = &view.env().theme.tokens;
-        let motion_id = WidgetId::explicit(&format!("create.mode.{}.motion", chip.label_key));
         let hit_id = WidgetId::explicit(&format!("create.mode.{}.hit", chip.label_key));
         let bg = if chip.active {
             white_alpha(42)
@@ -372,7 +371,7 @@ impl From<CaptureModeChip> for Widget {
             ..Default::default()
         };
 
-        fission::motion::interactive(motion_id, fission::motion::hover_press(hit_id), tappable)
+        tappable.into()
     }
 }
 
@@ -387,7 +386,6 @@ impl From<RecordButton> for Widget {
     fn from(button: RecordButton) -> Self {
         let (_ctx, view) = fission::build::current::<TikTokState>();
         let tokens = &view.env().theme.tokens;
-        let motion_id = WidgetId::explicit("create.record.button.motion");
         let hit_id = WidgetId::explicit("create.record.button.hit");
         let pulse_track = fission::motion::MotionTrack::composite(
             fission::motion::MotionPropertyId::Scale,
@@ -438,6 +436,6 @@ impl From<RecordButton> for Widget {
             ..Default::default()
         };
 
-        fission::motion::interactive(motion_id, fission::motion::hover_press(hit_id), tappable)
+        tappable.into()
     }
 }

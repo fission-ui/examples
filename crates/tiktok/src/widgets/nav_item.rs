@@ -21,7 +21,6 @@ impl From<NavItem> for Widget {
         } else {
             tokens.colors.text_secondary
         };
-        let motion_id = WidgetId::explicit(&format!("nav.item.{}.motion", item.target_path));
         let hit_id = WidgetId::explicit(&format!("nav.item.{}.hit", item.target_path));
         let action = ctx.bind(
             crate::state::SetCurrentPath(item.target_path.to_string()),
@@ -60,6 +59,6 @@ impl From<NavItem> for Widget {
             ..Default::default()
         };
 
-        fission::motion::interactive(motion_id, fission::motion::hover_press(hit_id), tappable)
+        tappable.into()
     }
 }

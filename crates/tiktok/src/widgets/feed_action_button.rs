@@ -16,7 +16,6 @@ impl From<FeedActionButton> for Widget {
     fn from(button: FeedActionButton) -> Self {
         let (_ctx, view) = fission::build::current::<crate::state::TikTokState>();
         let tokens = &view.env().theme.tokens;
-        let motion_id = WidgetId::explicit(&format!("feed.action.{}.motion", button.id));
         let hit_id = WidgetId::explicit(&format!("feed.action.{}.hit", button.id));
         let icon_color = if button.active {
             button.accent
@@ -54,6 +53,6 @@ impl From<FeedActionButton> for Widget {
             None => body.into(),
         };
 
-        fission::motion::interactive(motion_id, fission::motion::hover_press(hit_id), child)
+        child
     }
 }
