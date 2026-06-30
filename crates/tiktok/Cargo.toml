@@ -1,0 +1,15 @@
+[package]
+name = "tiktok"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+fission.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[build-dependencies]
+fission-design-system-codegen = { version = "0.5.0" }
+
+[lib]
+crate-type = ["cdylib", "rlib"]

@@ -4980,10 +4980,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "tiktok-fission"
+name = "tiktok"
 version = "0.1.0"
 dependencies = [
  "fission",
+ "fission-design-system-codegen",
  "serde",
  "serde_json",
 ]

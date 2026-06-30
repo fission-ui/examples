@@ -1,0 +1,221 @@
+{
+  "videos": [
+    {
+      "id": "vid-city-jump",
+      "video_file": "video1.mp4",
+      "user": {
+        "handle": "maia.moves",
+        "display_name": "Maia Chen",
+        "avatar_color": "#FE2C55",
+        "verified": true,
+        "bio": "Choreographer. Small studio, big counts.",
+        "followers": 1840000,
+        "following": 248,
+        "total_likes": 23400000
+      },
+      "caption": "Taught this rooftop combo in one take. Save it for your next warmup.",
+      "hashtags": ["#danceclass", "#citypop", "#fyp"],
+      "music": {
+        "title": "Neon Steps",
+        "artist": "Karo Lane"
+      },
+      "location": "New York",
+      "category": "Dance",
+      "likes": 842000,
+      "comments": 18400,
+      "shares": 52300,
+      "saves": 91800,
+      "views": 9100000,
+      "duration_seconds": 28,
+      "is_sponsored": false
+    },
+    {
+      "id": "vid-rust-bento",
+      "video_file": "video2.mp4",
+      "user": {
+        "handle": "bytebites",
+        "display_name": "Niko Reyes",
+        "avatar_color": "#25F4EE",
+        "verified": true,
+        "bio": "Fast food, faster compilers.",
+        "followers": 672000,
+        "following": 132,
+        "total_likes": 9100000
+      },
+      "caption": "Building a lunch tracker in Rust while the noodles finish cooking.",
+      "hashtags": ["#rustlang", "#mealprep", "#desksetup"],
+      "music": {
+        "title": "Lo-fi Terminal",
+        "artist": "Patch Notes"
+      },
+      "location": "Austin",
+      "category": "Learning",
+      "likes": 219000,
+      "comments": 6100,
+      "shares": 14800,
+      "saves": 39100,
+      "views": 2400000,
+      "duration_seconds": 45,
+      "is_sponsored": false
+    },
+    {
+      "id": "vid-night-market",
+      "video_file": "video3.mp4",
+      "user": {
+        "handle": "supperclub",
+        "display_name": "Supper Club",
+        "avatar_color": "#F59E0B",
+        "verified": false,
+        "bio": "Street food maps and tiny kitchen tricks.",
+        "followers": 418000,
+        "following": 89,
+        "total_likes": 5600000
+      },
+      "caption": "Three stalls, one late-night route, and the dumplings worth crossing town for.",
+      "hashtags": ["#streetfood", "#nightmarket", "#foodtok"],
+      "music": {
+        "title": "Steam Table",
+        "artist": "Common Pantry"
+      },
+      "location": "Seattle",
+      "category": "Food",
+      "likes": 376000,
+      "comments": 8900,
+      "shares": 41200,
+      "saves": 70400,
+      "views": 5100000,
+      "duration_seconds": 36,
+      "is_sponsored": false
+    },
+    {
+      "id": "vid-fit-check",
+      "video_file": "video4.mp4",
+      "user": {
+        "handle": "rhea.archive",
+        "display_name": "Rhea Archive",
+        "avatar_color": "#8B5CF6",
+        "verified": false,
+        "bio": "Thrift finds, styling notes, no gatekeeping.",
+        "followers": 934000,
+        "following": 304,
+        "total_likes": 12800000
+      },
+      "caption": "One jacket, four silhouettes. Which one gets the train ride home?",
+      "hashtags": ["#fitcheck", "#thriftflip", "#style"],
+      "music": {
+        "title": "Mirror Loop",
+        "artist": "Satin Desk"
+      },
+      "location": "London",
+      "category": "Style",
+      "likes": 598000,
+      "comments": 13200,
+      "shares": 28400,
+      "saves": 84400,
+      "views": 6800000,
+      "duration_seconds": 31,
+      "is_sponsored": false
+    },
+    {
+      "id": "vid-camera-drop",
+      "video_file": "video5.mp4",
+      "user": {
+        "handle": "orbitgear",
+        "display_name": "Orbit Gear",
+        "avatar_color": "#0EA5E9",
+        "verified": true,
+        "bio": "Tools for mobile creators.",
+        "followers": 312000,
+        "following": 45,
+        "total_likes": 2700000
+      },
+      "caption": "Pocket rig test: low light, fast pans, no extra crew.",
+      "hashtags": ["#cameratest", "#creatorgear", "#behindthescenes"],
+      "music": {
+        "title": "Focus Pull",
+        "artist": "Frame Rate"
+      },
+      "location": "Los Angeles",
+      "category": "Gear",
+      "likes": 141000,
+      "comments": 3900,
+      "shares": 9200,
+      "saves": 27700,
+      "views": 1800000,
+      "duration_seconds": 39,
+      "is_sponsored": true
+    }
+  ],
+  "trends": [
+    {
+      "tag": "#desksetup",
+      "title": "Clean desk reset",
+      "subtitle": "Creator workspaces with practical cable control.",
+      "posts": 830000,
+      "lift": "+18%",
+      "category": "Lifestyle"
+    },
+    {
+      "tag": "#citypop",
+      "title": "Night-walk transitions",
+      "subtitle": "Warm lights, quick cuts, and pocket stabilizers.",
+      "posts": 2200000,
+      "lift": "+31%",
+      "category": "Music"
+    },
+    {
+      "tag": "#rustlang",
+      "title": "Build logs under 60s",
+      "subtitle": "Developers explain one idea with the code on screen.",
+      "posts": 410000,
+      "lift": "+44%",
+      "category": "Learning"
+    },
+    {
+      "tag": "#foodtok",
+      "title": "Late-night route maps",
+      "subtitle": "Saveable mini-guides for quick neighborhood dinners.",
+      "posts": 3500000,
+      "lift": "+12%",
+      "category": "Food"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "noti-1",
+      "actor": "Rhea Archive",
+      "action": "liked your comment",
+      "detail": "The brown jacket is the move.",
+      "age": "2m",
+      "unread": true,
+      "avatar_color": "#8B5CF6"
+    },
+    {
+      "id": "noti-2",
+      "actor": "Niko Reyes",
+      "action": "started following you",
+      "detail": "bytebites follows your account.",
+      "age": "18m",
+      "unread": true,
+      "avatar_color": "#25F4EE"
+    },
+    {
+      "id": "noti-3",
+      "actor": "Supper Club",
+      "action": "mentioned you",
+      "detail": "Added your dumpling stop to the route.",
+      "age": "1h",
+      "unread": false,
+      "avatar_color": "#F59E0B"
+    },
+    {
+      "id": "noti-4",
+      "actor": "Creator Fund",
+      "action": "sent an update",
+      "detail": "Your last post is outperforming similar videos.",
+      "age": "3h",
+      "unread": false,
+      "avatar_color": "#FE2C55"
+    }
+  ]
+}

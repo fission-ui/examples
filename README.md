@@ -8,7 +8,7 @@ Fission uses a Flutter-inspired widget architecture with deterministic state man
 
 This workspace includes multiple crates demonstrating different patterns and capabilities of the Fission framework.
 
-### 📱 TikTok Clone (`crates/tiktok-fission`)
+### 📱 TikTok Clone (`crates/tiktok`)
 
 A mobile-first video feed application that showcases:
 - **Complex Gestures & Swiping**: Handling touch and drag interactions.
@@ -47,7 +47,7 @@ Fission provides its own CLI for a seamless development lifecycle. You can run a
 ### Running the TikTok Clone
 
 ```bash
-cd crates/tiktok-fission
+cd crates/tiktok
 fission run --target macos # Or ios, linux, windows, web
 ```
 

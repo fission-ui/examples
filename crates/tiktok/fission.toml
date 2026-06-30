@@ -1,0 +1,12 @@
+targets = [
+    "android",
+    "ios",
+    "linux",
+    "macos",
+    "windows",
+]
+
+[app]
+name = "tiktok"
+app_id = "com.example.tiktok"
+
