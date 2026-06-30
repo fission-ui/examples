@@ -53,11 +53,12 @@ impl From<CreateNavButton> for Widget {
                     top: Some(0.0),
                     child: Some(
                         Container::new(fission::core::ui::Row {
-                            children: vec![fission::core::ui::Text::new("+")
-                                .size(22.0)
-                                .weight(tokens.typography.font_weight_bold)
-                                .color(tokens.colors.background)
-                                .into()],
+                            children: vec![crate::widgets::AppIcon {
+                                svg: fission::icons::material::content::add::round(),
+                                size: 22.0,
+                                color: tokens.colors.background,
+                            }
+                            .into()],
                             align_items: AlignItems::Center,
                             justify_content: JustifyContent::Center,
                             ..Default::default()

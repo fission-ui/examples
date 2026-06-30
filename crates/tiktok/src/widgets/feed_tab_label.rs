@@ -14,16 +14,16 @@ impl From<FeedTabLabel> for Widget {
         let (_ctx, view) = fission::build::current::<crate::state::TikTokState>();
         let tokens = &view.env().theme.tokens;
         let color = if label.active {
-            tokens.colors.text_primary
+            crate::style::white()
         } else {
-            tokens.colors.text_secondary
+            crate::style::white_alpha(190)
         };
         let id = WidgetId::explicit(&format!("feed.tab.{}", label.label_key));
 
         let body = fission::core::ui::Column {
             children: vec![
                 fission::core::ui::Text::new(TextContent::Key(label.label_key.into()))
-                    .size(15.0)
+                    .size(if label.active { 16.0 } else { 15.0 })
                     .color(color)
                     .weight(if label.active {
                         tokens.typography.font_weight_bold
@@ -33,8 +33,8 @@ impl From<FeedTabLabel> for Widget {
                     .into(),
                 if label.active {
                     Container::default()
-                        .bg(tokens.colors.text_primary)
-                        .width(28.0)
+                        .bg(crate::style::white())
+                        .width(24.0)
                         .height(2.0)
                         .border_radius(1.0)
                         .into()

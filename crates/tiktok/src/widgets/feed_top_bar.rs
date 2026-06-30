@@ -8,37 +8,51 @@ pub struct FeedTopBar {}
 
 impl From<FeedTopBar> for Widget {
     fn from(_: FeedTopBar) -> Self {
+        let (_ctx, view) = fission::build::current::<crate::state::TikTokState>();
+        let tokens = &view.env().theme.tokens;
+
         fission::core::ui::Column {
             children: vec![
                 Container::default().height(48.0).into(),
                 fission::core::ui::Row {
                     children: vec![
-                        Container::new(
-                            fission::core::ui::Text::new(TextContent::Key("feed.live".into()))
-                                .size(13.0),
-                        )
-                        .padding([10.0, 10.0, 6.0, 6.0])
-                        .into(),
-                        crate::widgets::FeedTabLabel {
-                            label_key: "feed.following",
-                            active: false,
+                        fission::core::ui::Text::new(TextContent::Key("feed.live".into()))
+                            .size(13.0)
+                            .weight(tokens.typography.font_weight_bold)
+                            .color(crate::style::white())
+                            .width(52.0)
+                            .into(),
+                        fission::core::ui::Row {
+                            children: vec![
+                                crate::widgets::FeedTabLabel {
+                                    label_key: "feed.following",
+                                    active: false,
+                                }
+                                .into(),
+                                crate::widgets::FeedTabLabel {
+                                    label_key: "feed.for_you",
+                                    active: true,
+                                }
+                                .into(),
+                            ],
+                            gap: Some(20.0),
+                            justify_content: JustifyContent::Center,
+                            align_items: AlignItems::Center,
+                            flex_grow: 1.0,
+                            ..Default::default()
                         }
                         .into(),
-                        crate::widgets::FeedTabLabel {
-                            label_key: "feed.for_you",
-                            active: true,
-                        }
-                        .into(),
-                        Container::new(
-                            fission::core::ui::Text::new(TextContent::Key("feed.search".into()))
-                                .size(13.0),
-                        )
+                        Container::new(crate::widgets::AppIcon {
+                            svg: fission::icons::material::action::search::round(),
+                            size: 24.0,
+                            color: crate::style::white(),
+                        })
+                        .width(52.0)
                         .padding([10.0, 10.0, 6.0, 6.0])
                         .into(),
                     ],
-                    justify_content: JustifyContent::Center,
+                    justify_content: JustifyContent::SpaceBetween,
                     align_items: AlignItems::Center,
-                    gap: Some(18.0),
                     ..Default::default()
                 }
                 .into(),

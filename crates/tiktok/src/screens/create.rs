@@ -140,27 +140,29 @@ impl From<CreateScreen> for Widget {
                         fission::core::ui::Column {
                             children: vec![
                                 CaptureTool {
-                                    glyph: "↻",
+                                    icon_svg:
+                                        fission::icons::material::image::flip_camera_ios::round(),
                                     label_key: "create.flip",
                                 }
                                 .into(),
                                 CaptureTool {
-                                    glyph: "1x",
+                                    icon_svg: fission::icons::material::av::speed::round(),
                                     label_key: "create.speed",
                                 }
                                 .into(),
                                 CaptureTool {
-                                    glyph: "⏱",
+                                    icon_svg: fission::icons::material::image::timer::round(),
                                     label_key: "create.timer",
                                 }
                                 .into(),
                                 CaptureTool {
-                                    glyph: "✦",
+                                    icon_svg: fission::icons::material::image::auto_awesome::round(
+                                    ),
                                     label_key: "create.effects",
                                 }
                                 .into(),
                                 CaptureTool {
-                                    glyph: "♪",
+                                    icon_svg: fission::icons::material::image::music_note::round(),
                                     label_key: "create.sound",
                                 }
                                 .into(),
@@ -295,7 +297,7 @@ impl From<CapturePreview> for Widget {
 #[fission_component]
 #[derive(Clone)]
 struct CaptureTool {
-    glyph: &'static str,
+    icon_svg: &'static str,
     label_key: &'static str,
 }
 
@@ -306,12 +308,11 @@ impl From<CaptureTool> for Widget {
 
         fission::core::ui::Column {
             children: vec![
-                Container::new(
-                    fission::core::ui::Text::new(tool.glyph)
-                        .size(16.0)
-                        .weight(tokens.typography.font_weight_bold)
-                        .color(tokens.colors.text_primary),
-                )
+                Container::new(crate::widgets::AppIcon {
+                    svg: tool.icon_svg,
+                    size: 21.0,
+                    color: tokens.colors.text_primary,
+                })
                 .width(42.0)
                 .height(42.0)
                 .border_radius(21.0)

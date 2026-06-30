@@ -1,5 +1,5 @@
 use crate::state::TikTokState;
-use crate::style::white_alpha;
+use crate::style::{elevated_surface, screen_surface, tiktok_red};
 use crate::widgets::{NotificationRow, SmallVideoTile};
 use fission::core::ui::TextContent;
 use fission::op::{AlignItems, JustifyContent};
@@ -102,7 +102,7 @@ impl From<InboxScreen> for Widget {
             flex_grow: 1.0,
             ..Default::default()
         })
-        .bg(tokens.colors.background)
+        .bg(screen_surface())
         .flex_grow(1.0)
         .into()
     }
@@ -131,9 +131,9 @@ impl From<InboxTab> for Widget {
                 }),
         )
         .bg(if tab.active {
-            white_alpha(32)
+            tiktok_red()
         } else {
-            tokens.colors.surface
+            elevated_surface()
         })
         .border(tokens.colors.border, 1.0)
         .border_radius(16.0)

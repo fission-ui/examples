@@ -1,6 +1,6 @@
 use crate::state::{format_count, TikTokState};
-use crate::style::{color_from_hex, white_alpha};
-use crate::widgets::{ProfileStat, ProfileVideoTile};
+use crate::style::{color_from_hex, screen_surface, tiktok_red, true_black, white_alpha};
+use crate::widgets::{AppIcon, ProfileStat, ProfileVideoTile};
 use fission::core::ui::TextContent;
 use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
@@ -65,10 +65,15 @@ impl From<ProfileScreen> for Widget {
                             .color(tokens.colors.text_primary)
                             .flex_grow(1.0)
                             .into(),
-                        fission::core::ui::Text::new("☰")
-                            .size(20.0)
-                            .color(tokens.colors.text_primary)
-                            .into(),
+                        Container::new(AppIcon {
+                            svg: fission::icons::material::navigation::menu::round(),
+                            size: 24.0,
+                            color: tokens.colors.text_primary,
+                        })
+                        .width(34.0)
+                        .height(34.0)
+                        .border_radius(17.0)
+                        .into(),
                     ],
                     align_items: AlignItems::Center,
                     justify_content: JustifyContent::SpaceBetween,
@@ -187,7 +192,7 @@ impl From<ProfileScreen> for Widget {
             flex_grow: 1.0,
             ..Default::default()
         })
-        .bg(tokens.colors.background)
+        .bg(screen_surface())
         .flex_grow(1.0)
         .into()
     }
@@ -210,16 +215,16 @@ impl From<ProfileButton> for Widget {
                 .size(13.0)
                 .weight(tokens.typography.font_weight_bold)
                 .color(if button.primary {
-                    tokens.colors.background
+                    tokens.colors.text_primary
                 } else {
                     tokens.colors.text_primary
                 }),
         )
         .width(if button.primary { 180.0 } else { 116.0 })
         .bg(if button.primary {
-            tokens.colors.text_primary
+            tiktok_red()
         } else {
-            tokens.colors.surface
+            true_black()
         })
         .border(tokens.colors.border, 1.0)
         .border_radius(8.0)
@@ -256,7 +261,7 @@ impl From<ProfileTab> for Widget {
                         .height(2.0)
                         .width(42.0)
                         .border_radius(1.0)
-                        .bg(tokens.colors.text_primary)
+                        .bg(tiktok_red())
                         .into()
                 } else {
                     Container::default().height(2.0).into()

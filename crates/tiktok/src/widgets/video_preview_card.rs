@@ -1,6 +1,7 @@
 use crate::data::VideoData;
 use crate::state::format_count;
-use crate::style::{black_alpha, color_from_hex, white_alpha};
+use crate::style::{black_alpha, true_black, white_alpha};
+use fission::op::ImageFit;
 use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
 
@@ -16,7 +17,6 @@ impl From<VideoPreviewCard> for Widget {
         let (_ctx, view) = fission::build::current::<crate::state::TikTokState>();
         let tokens = &view.env().theme.tokens;
         let id = WidgetId::explicit(&format!("preview.card.{}", card.video.id));
-        let accent = color_from_hex(&card.video.user.avatar_color, tokens.colors.primary);
         let mut tracks = fission::motion::fade();
         tracks.extend(fission::motion::slide_y(20.0));
         for track in tracks.iter_mut() {
@@ -32,9 +32,33 @@ impl From<VideoPreviewCard> for Widget {
                 Container::default()
                     .width(172.0)
                     .height(230.0)
-                    .bg(accent)
+                    .bg(true_black())
                     .border_radius(10.0)
                     .into(),
+                {
+                    let mut image =
+                        Image::file(crate::data::poster_asset_path(&card.video.video_file))
+                            .size(172.0, 230.0)
+                            .fit(ImageFit::Cover);
+                    image.id = Some(WidgetId::explicit(&format!(
+                        "preview.poster.{}",
+                        card.video.id
+                    )));
+                    image.into()
+                },
+                fission::widgets::Positioned {
+                    bottom: Some(0.0),
+                    left: Some(0.0),
+                    right: Some(0.0),
+                    child: Some(
+                        Container::default()
+                            .height(96.0)
+                            .bg(black_alpha(150))
+                            .into(),
+                    ),
+                    ..Default::default()
+                }
+                .into(),
                 fission::widgets::Positioned {
                     top: Some(10.0),
                     left: Some(10.0),
@@ -75,10 +99,12 @@ impl From<VideoPreviewCard> for Widget {
                                     .into(),
                                 fission::core::ui::Row {
                                     children: vec![
-                                        fission::core::ui::Text::new("▶")
-                                            .size(12.0)
-                                            .color(tokens.colors.text_primary)
-                                            .into(),
+                                        crate::widgets::AppIcon {
+                                            svg: fission::icons::material::av::play_arrow::round(),
+                                            size: 14.0,
+                                            color: tokens.colors.text_primary,
+                                        }
+                                        .into(),
                                         fission::core::ui::Text::new(format_count(
                                             card.video.views,
                                         ))
@@ -127,19 +153,42 @@ impl From<SmallVideoTile> for Widget {
             .i18n
             .get(&view.env().locale, "feed.views")
             .unwrap_or("views");
-        let accent = color_from_hex(&tile.video.user.avatar_color, tokens.colors.primary);
 
         Container::new(fission::core::ui::Row {
             children: vec![
-                Container::new(
-                    fission::core::ui::Text::new("▶")
-                        .size(14.0)
-                        .color(tokens.colors.text_primary),
-                )
+                Container::new(fission::widgets::ZStack {
+                    children: vec![
+                        {
+                            let mut image =
+                                Image::file(crate::data::poster_asset_path(&tile.video.video_file))
+                                    .size(54.0, 76.0)
+                                    .fit(ImageFit::Cover);
+                            image.id = Some(WidgetId::explicit(&format!(
+                                "small.poster.{}",
+                                tile.video.id
+                            )));
+                            image.into()
+                        },
+                        fission::widgets::Center {
+                            child: Container::new(crate::widgets::AppIcon {
+                                svg: fission::icons::material::av::play_arrow::round(),
+                                size: 15.0,
+                                color: tokens.colors.text_primary,
+                            })
+                            .width(26.0)
+                            .height(26.0)
+                            .border_radius(13.0)
+                            .bg(black_alpha(128))
+                            .into(),
+                        }
+                        .into(),
+                    ],
+                    ..Default::default()
+                })
                 .width(54.0)
                 .height(76.0)
                 .border_radius(8.0)
-                .bg(accent)
+                .bg(true_black())
                 .into(),
                 fission::core::ui::Column {
                     children: vec![
@@ -168,7 +217,7 @@ impl From<SmallVideoTile> for Widget {
             justify_content: JustifyContent::Start,
             ..Default::default()
         })
-        .bg(tokens.colors.surface)
+        .bg(crate::style::elevated_surface())
         .border(tokens.colors.border, 1.0)
         .border_radius(10.0)
         .padding_all(8.0)

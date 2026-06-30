@@ -1,6 +1,7 @@
 use crate::data::VideoData;
 use crate::state::format_count;
-use crate::style::{black_alpha, color_from_hex, white_alpha};
+use crate::style::{black_alpha, true_black, white_alpha};
+use fission::op::ImageFit;
 use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
 
@@ -14,7 +15,6 @@ impl From<ProfileVideoTile> for Widget {
     fn from(tile: ProfileVideoTile) -> Self {
         let (_ctx, view) = fission::build::current::<crate::state::TikTokState>();
         let tokens = &view.env().theme.tokens;
-        let accent = color_from_hex(&tile.video.user.avatar_color, tokens.colors.primary);
         let id = WidgetId::explicit(&format!("profile.tile.{}", tile.video.id));
 
         Container::new(fission::widgets::ZStack {
@@ -22,9 +22,33 @@ impl From<ProfileVideoTile> for Widget {
                 Container::default()
                     .width(120.0)
                     .height(166.0)
-                    .bg(accent)
+                    .bg(true_black())
                     .border_radius(8.0)
                     .into(),
+                {
+                    let mut image =
+                        Image::file(crate::data::poster_asset_path(&tile.video.video_file))
+                            .size(120.0, 166.0)
+                            .fit(ImageFit::Cover);
+                    image.id = Some(WidgetId::explicit(&format!(
+                        "profile.poster.{}",
+                        tile.video.id
+                    )));
+                    image.into()
+                },
+                fission::widgets::Positioned {
+                    bottom: Some(0.0),
+                    left: Some(0.0),
+                    right: Some(0.0),
+                    child: Some(
+                        Container::default()
+                            .height(46.0)
+                            .bg(black_alpha(150))
+                            .into(),
+                    ),
+                    ..Default::default()
+                }
+                .into(),
                 fission::widgets::Positioned {
                     bottom: Some(8.0),
                     left: Some(8.0),
@@ -32,10 +56,12 @@ impl From<ProfileVideoTile> for Widget {
                     child: Some(
                         fission::core::ui::Row {
                             children: vec![
-                                fission::core::ui::Text::new("▶")
-                                    .size(11.0)
-                                    .color(tokens.colors.text_primary)
-                                    .into(),
+                                crate::widgets::AppIcon {
+                                    svg: fission::icons::material::av::play_arrow::round(),
+                                    size: 13.0,
+                                    color: tokens.colors.text_primary,
+                                }
+                                .into(),
                                 fission::core::ui::Text::new(format_count(tile.video.views))
                                     .size(12.0)
                                     .weight(tokens.typography.font_weight_bold)

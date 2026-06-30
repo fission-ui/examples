@@ -77,3 +77,12 @@ pub fn video_asset_path(filename: &str) -> String {
         filename
     )
 }
+
+pub fn poster_asset_path(filename: &str) -> String {
+    let stem = filename.strip_suffix(".mp4").unwrap_or(filename);
+    format!(
+        "{}/src/assets/posters/{}.jpg",
+        env!("CARGO_MANIFEST_DIR"),
+        stem
+    )
+}

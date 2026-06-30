@@ -1,4 +1,3 @@
-use crate::style::white_alpha;
 use fission::op::AlignItems;
 use fission::prelude::*;
 
@@ -6,7 +5,7 @@ use fission::prelude::*;
 #[derive(Clone)]
 pub struct FeedActionButton {
     pub id: String,
-    pub glyph: &'static str,
+    pub icon_svg: &'static str,
     pub count: String,
     pub active: bool,
     pub accent: fission::op::Color,
@@ -28,18 +27,14 @@ impl From<FeedActionButton> for Widget {
         let body = fission::core::ui::Column {
             align_items: AlignItems::Center,
             children: vec![
-                Container::new(
-                    fission::core::ui::Text::new(button.glyph)
-                        .size(26.0)
-                        .color(icon_color),
-                )
-                .width(48.0)
-                .height(48.0)
-                .border_radius(24.0)
-                .bg(white_alpha(32))
+                crate::widgets::AppIcon {
+                    svg: button.icon_svg,
+                    size: 34.0,
+                    color: icon_color,
+                }
                 .into(),
                 fission::core::ui::Text::new(button.count)
-                    .size(12.0)
+                    .size(11.0)
                     .weight(tokens.typography.font_weight_bold)
                     .color(tokens.colors.text_primary)
                     .into(),

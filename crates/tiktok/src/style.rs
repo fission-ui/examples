@@ -4,6 +4,30 @@ pub fn rgba(r: u8, g: u8, b: u8, a: u8) -> Color {
     Color { r, g, b, a }
 }
 
+pub fn tiktok_red() -> Color {
+    rgba(254, 44, 85, 255)
+}
+
+pub fn tiktok_cyan() -> Color {
+    rgba(37, 244, 238, 255)
+}
+
+pub fn true_black() -> Color {
+    rgba(0, 0, 0, 255)
+}
+
+pub fn screen_surface() -> Color {
+    rgba(18, 18, 18, 255)
+}
+
+pub fn elevated_surface() -> Color {
+    rgba(30, 30, 30, 255)
+}
+
+pub fn white() -> Color {
+    rgba(255, 255, 255, 255)
+}
+
 pub fn black_alpha(alpha: u8) -> Color {
     rgba(0, 0, 0, alpha)
 }

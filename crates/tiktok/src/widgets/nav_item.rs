@@ -7,7 +7,7 @@ use fission::prelude::*;
 #[derive(Clone)]
 pub struct NavItem {
     pub target_path: &'static str,
-    pub icon: &'static str,
+    pub icon_svg: &'static str,
     pub label_key: &'static str,
 }
 
@@ -30,10 +30,12 @@ impl From<NavItem> for Widget {
 
         let body = Container::new(fission::core::ui::Column {
             children: vec![
-                fission::core::ui::Text::new(item.icon)
-                    .size(21.0)
-                    .color(color)
-                    .into(),
+                crate::widgets::AppIcon {
+                    svg: item.icon_svg,
+                    size: 24.0,
+                    color,
+                }
+                .into(),
                 fission::core::ui::Text::new(TextContent::Key(item.label_key.into()))
                     .size(11.0)
                     .weight(if active {

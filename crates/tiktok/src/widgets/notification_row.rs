@@ -1,5 +1,5 @@
 use crate::data::NotificationData;
-use crate::style::white_alpha;
+use crate::style::{elevated_surface, tiktok_red, white_alpha};
 use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
 
@@ -16,7 +16,7 @@ impl From<NotificationRow> for Widget {
         let bg = if row.notification.unread {
             white_alpha(24)
         } else {
-            tokens.colors.surface
+            elevated_surface()
         };
 
         Container::new(fission::core::ui::Row {
@@ -68,7 +68,7 @@ impl From<NotificationRow> for Widget {
                         .width(8.0)
                         .height(8.0)
                         .border_radius(4.0)
-                        .bg(tokens.colors.primary)
+                        .bg(tiktok_red())
                         .into()
                 } else {
                     Container::default().width(8.0).into()

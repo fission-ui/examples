@@ -1,4 +1,5 @@
 pub mod action_sidebar;
+pub mod app_icon;
 pub mod bottom_nav;
 pub mod comments_sheet;
 pub mod create_nav_button;
@@ -18,6 +19,7 @@ pub mod video_item;
 pub mod video_preview_card;
 
 pub use action_sidebar::ActionSidebar;
+pub use app_icon::AppIcon;
 pub use bottom_nav::BottomNav;
 pub use comments_sheet::CommentsSheet;
 pub use create_nav_button::CreateNavButton;

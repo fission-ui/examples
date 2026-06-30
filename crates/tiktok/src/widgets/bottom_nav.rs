@@ -1,4 +1,5 @@
 use crate::state::TikTokState;
+use crate::style::{black_alpha, true_black};
 use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
 
@@ -14,40 +15,35 @@ impl From<BottomNav> for Widget {
         let current_path = &state.current_path;
 
         let bar_bg = if current_path == "/" {
-            fission::op::Color {
-                r: 15,
-                g: 15,
-                b: 15,
-                a: 226,
-            }
+            black_alpha(218)
         } else {
-            tokens.colors.background
+            true_black()
         };
 
         Container::new(fission::core::ui::Row {
             children: vec![
                 crate::widgets::NavItem {
                     target_path: "/",
-                    icon: "⌂",
+                    icon_svg: fission::icons::material::action::home::round(),
                     label_key: "nav.home",
                 }
                 .into(),
                 crate::widgets::NavItem {
                     target_path: "/discover",
-                    icon: "⌕",
+                    icon_svg: fission::icons::material::action::explore::round(),
                     label_key: "nav.discover",
                 }
                 .into(),
                 crate::widgets::CreateNavButton::default().into(),
                 crate::widgets::NavItem {
                     target_path: "/inbox",
-                    icon: "✉",
+                    icon_svg: fission::icons::material::content::inbox::round(),
                     label_key: "nav.inbox",
                 }
                 .into(),
                 crate::widgets::NavItem {
                     target_path: "/profile",
-                    icon: "◉",
+                    icon_svg: fission::icons::material::action::account_circle::round(),
                     label_key: "nav.profile",
                 }
                 .into(),
@@ -57,7 +53,7 @@ impl From<BottomNav> for Widget {
             ..Default::default()
         })
         .bg(bar_bg)
-        .border(tokens.colors.border, 0.5)
+        .border(tokens.colors.border, 0.0)
         .height(80.0)
         .into()
     }

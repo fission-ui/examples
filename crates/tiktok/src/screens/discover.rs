@@ -1,6 +1,6 @@
 use crate::state::TikTokState;
-use crate::style::white_alpha;
-use crate::widgets::{TrendChip, VideoPreviewCard};
+use crate::style::{elevated_surface, screen_surface};
+use crate::widgets::{AppIcon, TrendChip, VideoPreviewCard};
 use fission::core::ui::TextContent;
 use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
@@ -55,15 +55,15 @@ impl From<DiscoverScreen> for Widget {
                             .color(tokens.colors.text_primary)
                             .flex_grow(1.0)
                             .into(),
-                        Container::new(
-                            fission::core::ui::Text::new("⌕")
-                                .size(18.0)
-                                .color(tokens.colors.text_primary),
-                        )
+                        Container::new(AppIcon {
+                            svg: fission::icons::material::action::search::round(),
+                            size: 20.0,
+                            color: tokens.colors.text_primary,
+                        })
                         .width(38.0)
                         .height(38.0)
                         .border_radius(19.0)
-                        .bg(white_alpha(28))
+                        .bg(elevated_surface())
                         .into(),
                     ],
                     align_items: AlignItems::Center,
@@ -75,7 +75,7 @@ impl From<DiscoverScreen> for Widget {
                     fission::core::ui::Text::new(TextContent::Key("discover.search".into()))
                         .color(tokens.colors.text_secondary),
                 )
-                .bg(tokens.colors.surface)
+                .bg(elevated_surface())
                 .border(tokens.colors.border, 1.0)
                 .border_radius(12.0)
                 .padding([14.0, 14.0, 12.0, 12.0])
@@ -115,7 +115,7 @@ impl From<DiscoverScreen> for Widget {
             flex_grow: 1.0,
             ..Default::default()
         })
-        .bg(tokens.colors.background)
+        .bg(screen_surface())
         .flex_grow(1.0)
         .into()
     }

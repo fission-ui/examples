@@ -1,4 +1,5 @@
 use crate::data::VideoData;
+use crate::style::{tiktok_cyan, tiktok_red};
 use fission::op::AlignItems;
 use fission::prelude::*;
 
@@ -42,34 +43,34 @@ impl From<ActionSidebar> for Widget {
                 Container::default().height(20.0).into(),
                 crate::widgets::FeedActionButton {
                     id: format!("{}.like", sidebar.video.id),
-                    glyph: "♥",
+                    icon_svg: fission::icons::material::action::favorite::round(),
                     count: crate::state::format_count(sidebar.display_likes),
                     active: sidebar.is_liked,
-                    accent: tokens.colors.primary,
+                    accent: tiktok_red(),
                     on_tap: Some(sidebar.on_like),
                 }
                 .into(),
                 crate::widgets::FeedActionButton {
                     id: format!("{}.comments", sidebar.video.id),
-                    glyph: "☰",
+                    icon_svg: fission::icons::material::communication::comment::round(),
                     count: crate::state::format_count(sidebar.video.comments),
                     active: false,
-                    accent: tokens.colors.info,
+                    accent: tiktok_cyan(),
                     on_tap: Some(sidebar.on_comments),
                 }
                 .into(),
                 crate::widgets::FeedActionButton {
                     id: format!("{}.save", sidebar.video.id),
-                    glyph: "◆",
+                    icon_svg: fission::icons::material::action::bookmark::round(),
                     count: crate::state::format_count(sidebar.display_saves),
                     active: sidebar.is_saved,
-                    accent: tokens.colors.warning,
+                    accent: tiktok_cyan(),
                     on_tap: Some(sidebar.on_save),
                 }
                 .into(),
                 crate::widgets::FeedActionButton {
                     id: format!("{}.share", sidebar.video.id),
-                    glyph: "↗",
+                    icon_svg: fission::icons::material::content::send::round(),
                     count: crate::state::format_count(sidebar.video.shares),
                     active: false,
                     accent: tokens.colors.text_primary,
@@ -82,10 +83,10 @@ impl From<ActionSidebar> for Widget {
                 }
                 .into(),
             ],
-            gap: Some(14.0),
+            gap: Some(16.0),
             ..Default::default()
         })
-        .width(72.0)
+        .width(60.0)
         .into()
     }
 }

@@ -1,4 +1,4 @@
-use crate::style::{color_from_hex, rgba, white_alpha};
+use crate::style::{color_from_hex, rgba, tiktok_red, white_alpha};
 use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
 
@@ -28,23 +28,27 @@ impl From<CreatorAvatar> for Widget {
             .to_string();
 
         let follow_badge = if avatar.is_following {
-            Container::new(fission::core::ui::Text::new("✓").size(12.0))
-                .width(22.0)
-                .height(22.0)
-                .border_radius(11.0)
-                .bg(tokens.colors.success)
-                .border(tokens.colors.text_primary, 2.0)
-                .into()
+            Container::new(crate::widgets::AppIcon {
+                svg: fission::icons::material::action::check_circle::round(),
+                size: 14.0,
+                color: tokens.colors.text_primary,
+            })
+            .width(22.0)
+            .height(22.0)
+            .border_radius(11.0)
+            .bg(tokens.colors.success)
+            .border(tokens.colors.text_primary, 2.0)
+            .into()
         } else {
-            Container::new(
-                fission::core::ui::Text::new("+")
-                    .size(18.0)
-                    .weight(tokens.typography.font_weight_bold),
-            )
+            Container::new(crate::widgets::AppIcon {
+                svg: fission::icons::material::content::add::round(),
+                size: 16.0,
+                color: tokens.colors.text_primary,
+            })
             .width(24.0)
             .height(24.0)
             .border_radius(12.0)
-            .bg(tokens.colors.primary)
+            .bg(tiktok_red())
             .border(tokens.colors.text_primary, 2.0)
             .into()
         };

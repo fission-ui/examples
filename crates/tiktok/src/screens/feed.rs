@@ -1,11 +1,10 @@
 use fission::core::ui::TextContent;
-use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
 use serde::{Deserialize, Serialize};
 
 use crate::state::TikTokState;
 use crate::style::{black_alpha, white_alpha};
-use crate::widgets::{ActionSidebar, CommentsSheet, FeedTopBar, VideoInfo, VideoItem};
+use crate::widgets::{ActionSidebar, AppIcon, CommentsSheet, FeedTopBar, VideoInfo, VideoItem};
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct FeedLocalState {
@@ -178,11 +177,11 @@ impl From<FeedScreen> for Widget {
                 right: Some(0.0),
                 child: Some(
                     fission::widgets::Center {
-                        child: Container::new(
-                            fission::core::ui::Text::new("▶")
-                                .size(34.0)
-                                .color(tokens.colors.text_primary),
-                        )
+                        child: Container::new(AppIcon {
+                            svg: fission::icons::material::av::play_arrow::round(),
+                            size: 38.0,
+                            color: tokens.colors.text_primary,
+                        })
                         .bg(black_alpha(120))
                         .border(white_alpha(36), 1.0)
                         .border_radius(42.0)
@@ -215,25 +214,38 @@ impl From<FeedScreen> for Widget {
             children: vec![
                 Container::default().bg(tokens.colors.background).into(),
                 video_layer,
+                fission::widgets::Positioned {
+                    top: Some(0.0),
+                    left: Some(0.0),
+                    right: Some(0.0),
+                    child: Some(
+                        Container::default()
+                            .height(106.0)
+                            .bg(black_alpha(118))
+                            .into(),
+                    ),
+                    ..Default::default()
+                }
+                .into(),
+                fission::widgets::Positioned {
+                    bottom: Some(0.0),
+                    left: Some(0.0),
+                    right: Some(0.0),
+                    child: Some(
+                        Container::default()
+                            .height(248.0)
+                            .bg(black_alpha(150))
+                            .into(),
+                    ),
+                    ..Default::default()
+                }
+                .into(),
                 gesture_layer.into(),
                 fission::widgets::Positioned {
                     top: Some(0.0),
                     left: Some(0.0),
                     right: Some(0.0),
                     child: Some(FeedTopBar::default().into()),
-                    ..Default::default()
-                }
-                .into(),
-                fission::widgets::Positioned {
-                    top: Some(94.0),
-                    right: Some(16.0),
-                    child: Some(
-                        FeedProgressRail {
-                            current: index + 1,
-                            total: max_len,
-                        }
-                        .into(),
-                    ),
                     ..Default::default()
                 }
                 .into(),
@@ -279,44 +291,6 @@ impl From<FeedScreen> for Widget {
         })
         .bg(tokens.colors.background)
         .flex_grow(1.0)
-        .into()
-    }
-}
-
-#[fission_component]
-#[derive(Clone)]
-struct FeedProgressRail {
-    current: usize,
-    total: usize,
-}
-
-impl From<FeedProgressRail> for Widget {
-    fn from(rail: FeedProgressRail) -> Self {
-        let (_ctx, view) = fission::build::current::<TikTokState>();
-        let tokens = &view.env().theme.tokens;
-
-        Container::new(fission::core::ui::Column {
-            children: vec![
-                fission::core::ui::Text::new(format!("{}/{}", rail.current, rail.total))
-                    .size(11.0)
-                    .weight(tokens.typography.font_weight_bold)
-                    .color(tokens.colors.text_primary)
-                    .into(),
-                Container::default()
-                    .width(3.0)
-                    .height(86.0)
-                    .border_radius(2.0)
-                    .bg(white_alpha(50))
-                    .into(),
-            ],
-            gap: Some(6.0),
-            align_items: AlignItems::Center,
-            justify_content: JustifyContent::Center,
-            ..Default::default()
-        })
-        .padding_all(6.0)
-        .bg(black_alpha(60))
-        .border_radius(12.0)
         .into()
     }
 }

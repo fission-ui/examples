@@ -1,3 +1,4 @@
+use fission::op::ImageFit;
 use fission::prelude::*;
 
 #[fission_component]
@@ -16,17 +17,11 @@ impl Default for VideoItem {
 
 impl From<VideoItem> for Widget {
     fn from(item: VideoItem) -> Self {
-        let video_id = WidgetId::explicit(&format!("video.surface.{}", item.id));
-        let source = crate::data::video_asset_path(&item.video_file);
+        let poster_id = WidgetId::explicit(&format!("video.poster.{}", item.id));
+        let source = crate::data::poster_asset_path(&item.video_file);
+        let mut poster = Image::file(source).size(800.0, 600.0).fit(ImageFit::Cover);
+        poster.id = Some(poster_id);
 
-        Video {
-            id: Some(video_id),
-            source,
-            width: None,
-            height: None,
-            autoplay: item.is_playing,
-            loop_playback: true,
-        }
-        .into()
+        poster.into()
     }
 }

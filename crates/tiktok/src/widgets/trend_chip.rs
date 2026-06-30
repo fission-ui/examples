@@ -1,5 +1,5 @@
 use crate::data::TrendData;
-use crate::style::white_alpha;
+use crate::style::{elevated_surface, tiktok_cyan, white_alpha};
 use fission::op::{AlignItems, JustifyContent};
 use fission::prelude::*;
 
@@ -39,7 +39,7 @@ impl From<TrendChip> for Widget {
                         Container::new(
                             fission::core::ui::Text::new(chip.trend.lift.clone())
                                 .size(12.0)
-                                .color(tokens.colors.success),
+                                .color(tiktok_cyan()),
                         )
                         .border_radius(12.0)
                         .bg(white_alpha(24))
@@ -64,7 +64,7 @@ impl From<TrendChip> for Widget {
             gap: Some(6.0),
             ..Default::default()
         })
-        .bg(tokens.colors.surface)
+        .bg(elevated_surface())
         .border(tokens.colors.border, 1.0)
         .border_radius(12.0)
         .padding([14.0, 14.0, 12.0, 12.0]);
